@@ -2,15 +2,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>AlexSullivan.me</title>
-    <link>https://example.com/docs/Classes/Computer-System-Security/</link>
+    <link>https://slexaullivan.github.io/docs/Classes/Computer-System-Security/</link>
     <description>Recent content on AlexSullivan.me</description>
-    <generator>Hugo -- gohugo.io</generator><atom:link href="https://example.com/docs/Classes/Computer-System-Security/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://slexaullivan.github.io/docs/Classes/Computer-System-Security/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Buffer Overflow Vulnerability</title>
-      <link>https://example.com/docs/Classes/Computer-System-Security/Labmodule4/</link>
+      <link>https://slexaullivan.github.io/docs/Classes/Computer-System-Security/Labmodule4/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/docs/Classes/Computer-System-Security/Labmodule4/</guid>
+      <guid>https://slexaullivan.github.io/docs/Classes/Computer-System-Security/Labmodule4/</guid>
       <description>Module 4 Lab: Buffer Overflow #  1 Overview #  Learning Objective:
 Students will gain first hand experience of the buffer overflow vulnerability. Buffer overflow is when a program attempts to write data beyond the boundary of the space allocated for it in a fixed length buffer. The overwritten code, can be formatted in a way that the return address of the function points to malicious code.
 This lab covers the following topics:</description>
@@ -18,10 +18,10 @@ This lab covers the following topics:</description>
     
     <item>
       <title></title>
-      <link>https://example.com/docs/Classes/Computer-System-Security/envVariables/</link>
+      <link>https://slexaullivan.github.io/docs/Classes/Computer-System-Security/envVariables/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/docs/Classes/Computer-System-Security/envVariables/</guid>
+      <guid>https://slexaullivan.github.io/docs/Classes/Computer-System-Security/envVariables/</guid>
       <description>Environment Variables (Reading) #   Link to Reading
 Environment:
 An area that the shell builds every time that it starts a session, that contains variables that define system properties.
@@ -31,10 +31,10 @@ Environment is implemented as key value pairs, if there are multiple values they
     
     <item>
       <title>Shell Shock Attack</title>
-      <link>https://example.com/docs/Classes/Computer-System-Security/Lab-Module-3-Shellshock-Attack/</link>
+      <link>https://slexaullivan.github.io/docs/Classes/Computer-System-Security/Lab-Module-3-Shellshock-Attack/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/docs/Classes/Computer-System-Security/Lab-Module-3-Shellshock-Attack/</guid>
+      <guid>https://slexaullivan.github.io/docs/Classes/Computer-System-Security/Lab-Module-3-Shellshock-Attack/</guid>
       <description>Lab Module 3: Shellshock Attack #  Alexander Sullivan
 3/04/21
 Part One: Overview #  Learning Objective: get first hand experience with the shellshock vulnerability.

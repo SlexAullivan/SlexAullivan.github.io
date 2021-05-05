@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>AlexSullivan.me</title>
-    <link>https://example.com/docs/Classes/Algorithms/</link>
+    <link>https://slexaullivan.github.io/docs/Classes/Algorithms/</link>
     <description>Recent content on AlexSullivan.me</description>
-    <generator>Hugo -- gohugo.io</generator><atom:link href="https://example.com/docs/Classes/Algorithms/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://slexaullivan.github.io/docs/Classes/Algorithms/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
-      <link>https://example.com/docs/Classes/Algorithms/Hashing/</link>
+      <link>https://slexaullivan.github.io/docs/Classes/Algorithms/Hashing/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/docs/Classes/Algorithms/Hashing/</guid>
+      <guid>https://slexaullivan.github.io/docs/Classes/Algorithms/Hashing/</guid>
       <description>Hashing #  Date: Mar 2, 2021 Module: four
 Dictionary (ADT) #   Maintain set of items ( key, Value) insert an item (key, value) delete items (key, value) search (key) to get specified value insert item ( do not allow duplicate keys to exist)    \(O(1)\)  time, expected time not worst case time We are leaving the comparison model, since we proved the fastest search time is  \(O(nlog(n))\)   Can not find nearby values, or minimum/ maximum values as easily since we are not within the comparison model.</description>
     </item>
     
     <item>
       <title>Balanced Trees and AVL Trees</title>
-      <link>https://example.com/docs/Classes/Algorithms/balancedBST/</link>
+      <link>https://slexaullivan.github.io/docs/Classes/Algorithms/balancedBST/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/docs/Classes/Algorithms/balancedBST/</guid>
+      <guid>https://slexaullivan.github.io/docs/Classes/Algorithms/balancedBST/</guid>
       <description>Balanced BST&amp;rsquo;s #   Importance of balancing AVL trees  Remember binary search trees where all items in nodes subtree are less than the root and all of the items in the right subtree are greater than the root.
 Balancing Trees #  What is a balanced tree? #  Ideally we want our tree to have a height of   \(\theta(log(n))\)  Thus a BST is balanced if and only if:</description>
     </item>
