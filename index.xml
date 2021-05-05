@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AlexSullivan.me</title>
+    <link>https://example.com/</link>
+    <description>Recent content on AlexSullivan.me</description>
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://example.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Buffer Overflow Vulnerability</title>
+      <link>https://example.com/docs/Classes/Computer-System-Security/Labmodule4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/docs/Classes/Computer-System-Security/Labmodule4/</guid>
+      <description>Module 4 Lab: Buffer Overflow #  1 Overview #  Learning Objective:
+Students will gain first hand experience of the buffer overflow vulnerability. Buffer overflow is when a program attempts to write data beyond the boundary of the space allocated for it in a fixed length buffer. The overwritten code, can be formatted in a way that the return address of the function points to malicious code.
+This lab covers the following topics:</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://example.com/docs/Classes/Algorithms/Hashing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/docs/Classes/Algorithms/Hashing/</guid>
+      <description>Hashing #  Date: Mar 2, 2021 Module: four
+Dictionary (ADT) #   Maintain set of items ( key, Value) insert an item (key, value) delete items (key, value) search (key) to get specified value insert item ( do not allow duplicate keys to exist)    \(O(1)\)  time, expected time not worst case time We are leaving the comparison model, since we proved the fastest search time is  \(O(nlog(n))\)   Can not find nearby values, or minimum/ maximum values as easily since we are not within the comparison model.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://example.com/docs/Classes/Computer-System-Security/envVariables/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/docs/Classes/Computer-System-Security/envVariables/</guid>
+      <description>Environment Variables (Reading) #   Link to Reading
+Environment:
+An area that the shell builds every time that it starts a session, that contains variables that define system properties.
+Every time a shell spawns a process gathers and compiles information that should be available to the shell process and any children, from files and settings on the system.
+Environment is implemented as key value pairs, if there are multiple values they are separated by colons :</description>
+    </item>
+    
+    <item>
+      <title>Balanced Trees and AVL Trees</title>
+      <link>https://example.com/docs/Classes/Algorithms/balancedBST/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/docs/Classes/Algorithms/balancedBST/</guid>
+      <description>Balanced BST&amp;rsquo;s #   Importance of balancing AVL trees  Remember binary search trees where all items in nodes subtree are less than the root and all of the items in the right subtree are greater than the root.
+Balancing Trees #  What is a balanced tree? #  Ideally we want our tree to have a height of   \(\theta(log(n))\)  Thus a BST is balanced if and only if:</description>
+    </item>
+    
+    <item>
+      <title>Considering Cognition</title>
+      <link>https://example.com/docs/Classes/Human-Computer-Interaction/ConsideringCognition/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/docs/Classes/Human-Computer-Interaction/ConsideringCognition/</guid>
+      <description>What is cognition? #  Cognition is many things but essentially how we think. Our cognition can be mader up of many parts. For example:
+ attention perception memory learning reading, speaking and listening problem soving, planning, reasoning and decison making  Rarely are these used in a vacuum one at a time, instead human cognition involves many of these often at the same time. The most relevant for this course are probably attention and memory.</description>
+    </item>
+    
+    <item>
+      <title>Shell Shock Attack</title>
+      <link>https://example.com/docs/Classes/Computer-System-Security/Lab-Module-3-Shellshock-Attack/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/docs/Classes/Computer-System-Security/Lab-Module-3-Shellshock-Attack/</guid>
+      <description>Lab Module 3: Shellshock Attack #  Alexander Sullivan
+3/04/21
+Part One: Overview #  Learning Objective: get first hand experience with the shellshock vulnerability.
+We will be experimenting with the actual shellshock attack in this lab. The Shellshock attack was first developed on September 24, 2014, and was a vulnerability within the Bash program.
+Part Two: Lab Tasks #  2.1 Experimenting with Bash function #  Bash within Ubuntu 16.</description>
+    </item>
+    
+  </channel>
+</rss>

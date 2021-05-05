@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="generator" content="Hugo 0.83.1" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Environment Variables (Reading) #   Link to Reading
+Environment:
+An area that the shell builds every time that it starts a session, that contains variables that define system properties.
+Every time a shell spawns a process gathers and compiles information that should be available to the shell process and any children, from files and settings on the system.
+Environment is implemented as key value pairs, if there are multiple values they are separated by colons :">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
+<meta property="og:description" content="Environment Variables (Reading) #   Link to Reading
+Environment:
+An area that the shell builds every time that it starts a session, that contains variables that define system properties.
+Every time a shell spawns a process gathers and compiles information that should be available to the shell process and any children, from files and settings on the system.
+Environment is implemented as key value pairs, if there are multiple values they are separated by colons :" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/docs/Classes/Computer-System-Security/envVariables/" /><meta property="article:section" content="docs" />
+
+
+
+<title>Env Variables | AlexSullivan.me</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.6c7c6446dfdee7c8c933e9bbc6e80ee3ed6c913b2a59519f2092c3c6a9d63e55.css" integrity="sha256-bHxkRt/e58jJM&#43;m7xugO4&#43;1skTsqWVGfIJLDxqnWPlU=">
+<script defer src="/en.search.min.773ef9bd98b70106d672f1a1f08e8d5eb58b99deba2dcbc7d2a8f5deb423ffdb.js" integrity="sha256-dz75vZi3AQbWcvGh8I6NXrWLmd66LcvH0qj13rQj/9s="></script>
+
+<script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><span>AlexSullivan.me</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://example.com/docs/Classes/" class="">Classes</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-52d5595dc24a501967770b34cf1afb5a" class="toggle" checked />
+    <label for="section-52d5595dc24a501967770b34cf1afb5a" class="flex justify-between">
+      <a  class="">Computer System Security</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://example.com/docs/Classes/Computer-System-Security/Labmodule4/" class="">Buffer Overflow Vulnerability</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://example.com/docs/Classes/Computer-System-Security/envVariables/" class=" active">Env Variables</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://example.com/docs/Classes/Computer-System-Security/Format-String-Vulnerability/" class="">Format String Vulnerability</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://example.com/docs/Classes/Computer-System-Security/Lab-Module-3-Shellshock-Attack/" class="">Shell Shock Attack</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-27757b15399f596f50859475191c30a5" class="toggle"  />
+    <label for="section-27757b15399f596f50859475191c30a5" class="flex justify-between">
+      <a  class="">Human Computer Interaction</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://example.com/docs/Classes/Human-Computer-Interaction/ConsideringCognition/" class="">Considering Cognition</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-db6dfb8212facb60c852484abfed6e6f" class="toggle"  />
+    <label for="section-db6dfb8212facb60c852484abfed6e6f" class="flex justify-between">
+      <a  class="">Algorithms</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://example.com/docs/Classes/Algorithms/Hashing/" class="">Hashing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://example.com/docs/Classes/Algorithms/balancedBST/" class="">Balanced Trees and AVL Trees</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Env Variables</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#environment-variables-reading">Environment Variables (Reading)</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="environment-variables-reading">
+  Environment Variables (Reading)
+  <a class="anchor" href="#environment-variables-reading">#</a>
+</h1>
+<p>
+  <a href="https://www.digitalocean.com/community/tutorials/how-to-read-and-set-environmental-and-shell-variables-on-linux">Link to Reading</a></p>
+<p><strong>Environment:</strong></p>
+<p>An area that the shell builds every time that it starts a session, that contains variables that define system properties.</p>
+<p>Every time a shell spawns a process gathers and compiles information that should be available to the shell process and any children, from files and settings on the system.</p>
+<p>Environment is implemented as key value pairs, if there are multiple values they are separated by colons :</p>
+<p><code>KEY = value1: value2</code></p>
+<p>if there is white space:</p>
+<p><code>KEY = &quot;value  with spaces  &quot;</code></p>
+<p><strong>Environment Variables:</strong> variables defined for the current shell, inherited by any child shells. used to pass information into processes that are spawned from the shell.</p>
+<p><strong>Shell Variables:</strong> variables contained only in the shell that they were defined in, used for ephemeral data for example the working directory</p>
+<p>print variables with:</p>
+<p><code>printenv</code></p>
+<p><code>env</code> lets you modify the environment that programs run ion by passing a set of variable definitions into a command line</p>
+<p><code>set</code> : get a list of all shell variables, environment variables, local variables, and shell functions</p>
+<ul>
+<li>Environment variables are only passed to the child processes. so if a new environment variable is made within a child process the variable is destroyed when we return to the parent process.</li>
+</ul>
+<p>To make environment variables persistent even after the process, is closed so they do not need to be set every time bash is started, is more difficult than it seems due to the fact that bash starts in different ways depending on how the process is opened.</p>
+<p><strong>Login vs non-Login shells</strong></p>
+<ul>
+<li><strong>login:</strong> begins by authenticating the user, via terminal or ssh and authenticate
+<ul>
+<li>will read details from /etc/profile first, then look for the first login shell configuration file in the users home directory.</li>
+<li>reads the first file within  ~/.bash_profile, ~/.bash_login, and ~/.profile</li>
+<li>doesn&rsquo;t read any further files in the above</li>
+</ul>
+</li>
+<li><strong>non-login:</strong> starting a shell within an authenticated session, for example calling bash within terminal. we were not asked for authentication details
+<ul>
+<li>will read /etc/bash.bashrc, then the user specified ~/.bashrc to build environment</li>
+</ul>
+</li>
+</ul>
+<p><strong>interactive and non interactive:</strong></p>
+<ul>
+<li><strong>interactive:</strong> shell session attached to a terminal
+<ul>
+<li>normal session that begins with ssh</li>
+</ul>
+</li>
+<li><strong>non interactive:</strong> not attached to a terminal session
+<ul>
+<li>script run from command line: non interactive, non log in</li>
+<li>read the environmental variable called BASH_ENV, and read the file specified to define the new environment</li>
+</ul>
+</li>
+<li>shell sessions can be any combo of interactive, non interactive, login and non login</li>
+</ul>
+<p><strong>Implementing Environment Variables:</strong></p>
+<ul>
+<li>Usually we want our settings to be available both within the login and non login shells, so we define variables within the <code>~/.bashrc</code> file</li>
+<li>new environment variables can be placed anywhere within the file</li>
+<li>if system wide variables are needed then you need to think about adding them to <code>/etc/profile</code>, <code>/etc/bash.bashrc</code> , <code>/etc/environment</code></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#environment-variables-reading">Environment Variables (Reading)</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

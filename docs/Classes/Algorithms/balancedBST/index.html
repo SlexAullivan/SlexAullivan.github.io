@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="generator" content="Hugo 0.83.1" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Balanced BST&rsquo;s #   Importance of balancing AVL trees  Remember binary search trees where all items in nodes subtree are less than the root and all of the items in the right subtree are greater than the root.
+Balancing Trees #  What is a balanced tree? #  Ideally we want our tree to have a height of   \(\theta(log(n))\)  Thus a BST is balanced if and only if:">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Balanced Trees and AVL Trees" />
+<meta property="og:description" content="Balanced BST&rsquo;s #   Importance of balancing AVL trees  Remember binary search trees where all items in nodes subtree are less than the root and all of the items in the right subtree are greater than the root.
+Balancing Trees #  What is a balanced tree? #  Ideally we want our tree to have a height of   \(\theta(log(n))\)  Thus a BST is balanced if and only if:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/docs/Classes/Algorithms/balancedBST/" /><meta property="article:section" content="docs" />
+
+
+
+<title>Balanced Trees and AVL Trees | AlexSullivan.me</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.6c7c6446dfdee7c8c933e9bbc6e80ee3ed6c913b2a59519f2092c3c6a9d63e55.css" integrity="sha256-bHxkRt/e58jJM&#43;m7xugO4&#43;1skTsqWVGfIJLDxqnWPlU=">
+<script defer src="/en.search.min.773ef9bd98b70106d672f1a1f08e8d5eb58b99deba2dcbc7d2a8f5deb423ffdb.js" integrity="sha256-dz75vZi3AQbWcvGh8I6NXrWLmd66LcvH0qj13rQj/9s="></script>
+
+<script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><span>AlexSullivan.me</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://example.com/docs/Classes/" class="">Classes</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-52d5595dc24a501967770b34cf1afb5a" class="toggle"  />
+    <label for="section-52d5595dc24a501967770b34cf1afb5a" class="flex justify-between">
+      <a  class="">Computer System Security</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://example.com/docs/Classes/Computer-System-Security/Labmodule4/" class="">Buffer Overflow Vulnerability</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://example.com/docs/Classes/Computer-System-Security/envVariables/" class="">Env Variables</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://example.com/docs/Classes/Computer-System-Security/Format-String-Vulnerability/" class="">Format String Vulnerability</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://example.com/docs/Classes/Computer-System-Security/Lab-Module-3-Shellshock-Attack/" class="">Shell Shock Attack</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-27757b15399f596f50859475191c30a5" class="toggle"  />
+    <label for="section-27757b15399f596f50859475191c30a5" class="flex justify-between">
+      <a  class="">Human Computer Interaction</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://example.com/docs/Classes/Human-Computer-Interaction/ConsideringCognition/" class="">Considering Cognition</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-db6dfb8212facb60c852484abfed6e6f" class="toggle" checked />
+    <label for="section-db6dfb8212facb60c852484abfed6e6f" class="flex justify-between">
+      <a  class="">Algorithms</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://example.com/docs/Classes/Algorithms/Hashing/" class="">Hashing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://example.com/docs/Classes/Algorithms/balancedBST/" class=" active">Balanced Trees and AVL Trees</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Balanced Trees and AVL Trees</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#balanced-bsts">Balanced BST&rsquo;s</a></li>
+        <li><a href="#balancing-trees">Balancing Trees</a>
+          <ul>
+            <li><a href="#what-is-a-balanced-tree">What is a balanced tree?</a></li>
+          </ul>
+        </li>
+        <li><a href="#avl-trees">AVL Trees</a>
+          <ul>
+            <li><a href="#avl-constraint">AVL Constraint</a></li>
+            <li><a href="#maintaining-the-avl-constraint">Maintaining the AVL Constraint</a></li>
+            <li><a href="#avl-insert">AVL Insert:</a></li>
+            <li><a href="#rotation">Rotation</a></li>
+            <li><a href="#questions">Questions</a></li>
+            <li><a href="#fixing-the-avl-property">Fixing the AVL Property</a></li>
+            <li><a href="#time-complexity-of-avl">Time Complexity of AVL</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h2 id="balanced-bsts">
+  Balanced BST&rsquo;s
+  <a class="anchor" href="#balanced-bsts">#</a>
+</h2>
+<ul>
+<li>Importance of balancing</li>
+<li>AVL trees</li>
+</ul>
+<p>Remember binary search trees where all items in  nodes subtree are less than the root and all of the items in the right subtree are greater than the root.</p>
+<h2 id="balancing-trees">
+  Balancing Trees
+  <a class="anchor" href="#balancing-trees">#</a>
+</h2>
+<h3 id="what-is-a-balanced-tree">
+  What is a balanced tree?
+  <a class="anchor" href="#what-is-a-balanced-tree">#</a>
+</h3>
+<p>Ideally we want our tree to have a height of 
+<link rel="stylesheet" href="/katex/katex.min.css" />
+<script defer src="/katex/katex.min.js"></script>
+<script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script><span>
+  \(\theta(log(n))\)
+</span>
+</p>
+<p>Thus a BST is balanced if and only if:</p>
+<ol>
+<li>The hieghts of left/ right subtrees differ by no more than 1</li>
+<li>The left and right sub trees are balanced</li>
+</ol>
+<div class="book-columns flex flex-wrap">
+  
+  <div class="flex-even markdown-inner">
+    <h3 id="find-and-label-the-heights-of-the-tree">Find and label the heights of the tree</h3>
+<p><img src="/images/bst0.png" alt="">
+  </div>
+  
+  <div class="flex-even markdown-inner">
+    <h3 id="how-can-we-recursively-find-node-heights">How can we recursively find node heights?</h3>
+<p>Recurse on both children, then when you return add one to the larger of the subtrees maximum height.
+  </div>
+  
+</div>
+
+<h2 id="avl-trees">
+  AVL Trees
+  <a class="anchor" href="#avl-trees">#</a>
+</h2>
+<p>AVL trees are a binary search tree that follows the AVL Constraint</p>
+<h3 id="avl-constraint">
+  AVL Constraint
+  <a class="anchor" href="#avl-constraint">#</a>
+</h3>
+<p>Heights of the left and right children differ by at most one for all nodes</p>
+<p>We want to prove that the height of an AVL tree are <span>
+  \(\theta(log(n))\)
+</span>
+. Lets take a look at the worst case scenario for an AVL tree, where every right subtree is one taller than the corresponding left sub tree.</p>
+<p>
+  <img src="/images/bst1.png" alt="" /></p>
+<span>
+  \(N_h =\ minimum\ number\ of\ nodes\ possible\ in\ AVL\ tree\ with\ height\ h\)
+</span>
+
+<span>
+  \(N_h = N_{h-1}&#43;N_{h-2}&#43;1\)
+</span>
+
+<p>Clearly this sequence is increasing and  <span>
+  \(N_h &gt; 2N_{h-2}\)
+</span>
+, meaning that our sequence or number of nodes within the tree at least doubles, thus</p>
+<p><span>
+  \(N_h &gt; 2^{\frac{h}{2}}\)
+</span>
+ and <span>
+  \(h &lt; 2log(n)\)
+</span>
+</p>
+<h3 id="maintaining-the-avl-constraint">
+  Maintaining the AVL Constraint
+  <a class="anchor" href="#maintaining-the-avl-constraint">#</a>
+</h3>
+<h3 id="avl-insert">
+  AVL Insert:
+  <a class="anchor" href="#avl-insert">#</a>
+</h3>
+<ol>
+<li>BST Insert</li>
+<li>Fix AVL Constraint</li>
+</ol>
+<p>The Real question here is how do we maintain the AVL constraint, so that by fixing the AVL tree so we don&rsquo;t spend more than the desired <span>
+  \(\theta(log(N))\)
+</span>
+ time.</p>
+<h3 id="rotation">
+  Rotation
+  <a class="anchor" href="#rotation">#</a>
+</h3>
+<p>
+  <img src="/images/bst2.png" alt="" /></p>
+<p>Look at the following BST, when we insert 23, we get a doubly left heavy subtree and need to do a right rotate in order to fix our tree to follow the AVL constraint.</p>
+<p>
+  <img src="/images/bst3.png" alt="" /></p>
+<p>Sometimes just doing one single rotation is not enough, for example look wha theppens when we try to insert 55 and right rotate below.</p>
+<p>
+  <img src="/images/bst4.png" alt="" /></p>
+<p>Because 50&rsquo;s left subtree was empty, when we did the right rotate we created a doubly right heavy sub tree, to fix this we should have actually done a double rotation. Shown below.</p>
+<p>
+  <img src="/images/bst5.png" alt="" /></p>
+<p>Above we fixed the empty left sub tree, by doing a left rotate on 55. Then fixed the doubly left heavy sub tree of 65 by right rotating.</p>
+<h3 id="questions">
+  Questions
+  <a class="anchor" href="#questions">#</a>
+</h3>
+<ol>
+<li>
+<p>A single insertion of deletion creates a violation of the AVL constraint. What is the difference between the offending sub trees? Why?</p>
+<p>2, because the elements are at most already one away from each other so when we insert a new node we are at most adding one to that</p>
+</li>
+<li>
+<p>By Fixing this, we make another violation. What is the difference between the offending sub trees height? why?</p>
+<p>2, the rotated sub trees height either remains the same or decreases by one so the same reasoning from above applies.</p>
+</li>
+</ol>
+<h3 id="fixing-the-avl-property">
+  Fixing the AVL Property
+  <a class="anchor" href="#fixing-the-avl-property">#</a>
+</h3>
+<pre><code>Suppose x is the lowest node violating the AVL property. 
+(Start at inserted node, go up until you find x, fix x as below then 
+keep goin up from x)
+
+if x is right heavy
+	if right(x) if right heavy or balanced
+		then left rotate(x)
+	else
+		right rotate(right(x))
+		left rotate(x)
+else
+	if left(x) is left heavy or balanced
+		the right rotate(x)
+	else 
+		left rotate(left(x))
+		right rotate(x)
+
+</code></pre><h3 id="time-complexity-of-avl">
+  Time Complexity of AVL
+  <a class="anchor" href="#time-complexity-of-avl">#</a>
+</h3>
+<p>Time to insert: <span>
+  \(\theta(log(n))\)
+</span>
+</p>
+<p>number of corrections: <span>
+  \(\theta(h) = \theta(log(n))\)
+</span>
+</p>
+<p>corrections: <span>
+  \(\theta(1)\)
+</span>
+ time each</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#balanced-bsts">Balanced BST&rsquo;s</a></li>
+        <li><a href="#balancing-trees">Balancing Trees</a>
+          <ul>
+            <li><a href="#what-is-a-balanced-tree">What is a balanced tree?</a></li>
+          </ul>
+        </li>
+        <li><a href="#avl-trees">AVL Trees</a>
+          <ul>
+            <li><a href="#avl-constraint">AVL Constraint</a></li>
+            <li><a href="#maintaining-the-avl-constraint">Maintaining the AVL Constraint</a></li>
+            <li><a href="#avl-insert">AVL Insert:</a></li>
+            <li><a href="#rotation">Rotation</a></li>
+            <li><a href="#questions">Questions</a></li>
+            <li><a href="#fixing-the-avl-property">Fixing the AVL Property</a></li>
+            <li><a href="#time-complexity-of-avl">Time Complexity of AVL</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="generator" content="Hugo 0.83.1" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Lab Module 3: Shellshock Attack #  Alexander Sullivan
+3/04/21
+Part One: Overview #  Learning Objective: get first hand experience with the shellshock vulnerability.
+We will be experimenting with the actual shellshock attack in this lab. The Shellshock attack was first developed on September 24, 2014, and was a vulnerability within the Bash program.
+Part Two: Lab Tasks #  2.1 Experimenting with Bash function #  Bash within Ubuntu 16.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Shell Shock Attack" />
+<meta property="og:description" content="Lab Module 3: Shellshock Attack #  Alexander Sullivan
+3/04/21
+Part One: Overview #  Learning Objective: get first hand experience with the shellshock vulnerability.
+We will be experimenting with the actual shellshock attack in this lab. The Shellshock attack was first developed on September 24, 2014, and was a vulnerability within the Bash program.
+Part Two: Lab Tasks #  2.1 Experimenting with Bash function #  Bash within Ubuntu 16." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/docs/Classes/Computer-System-Security/Lab-Module-3-Shellshock-Attack/" /><meta property="article:section" content="docs" />
+
+
+
+<title>Shell Shock Attack | AlexSullivan.me</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.6c7c6446dfdee7c8c933e9bbc6e80ee3ed6c913b2a59519f2092c3c6a9d63e55.css" integrity="sha256-bHxkRt/e58jJM&#43;m7xugO4&#43;1skTsqWVGfIJLDxqnWPlU=">
+<script defer src="/en.search.min.773ef9bd98b70106d672f1a1f08e8d5eb58b99deba2dcbc7d2a8f5deb423ffdb.js" integrity="sha256-dz75vZi3AQbWcvGh8I6NXrWLmd66LcvH0qj13rQj/9s="></script>
+
+<script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><span>AlexSullivan.me</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://example.com/docs/Classes/" class="">Classes</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-52d5595dc24a501967770b34cf1afb5a" class="toggle" checked />
+    <label for="section-52d5595dc24a501967770b34cf1afb5a" class="flex justify-between">
+      <a  class="">Computer System Security</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://example.com/docs/Classes/Computer-System-Security/Labmodule4/" class="">Buffer Overflow Vulnerability</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://example.com/docs/Classes/Computer-System-Security/envVariables/" class="">Env Variables</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://example.com/docs/Classes/Computer-System-Security/Format-String-Vulnerability/" class="">Format String Vulnerability</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://example.com/docs/Classes/Computer-System-Security/Lab-Module-3-Shellshock-Attack/" class=" active">Shell Shock Attack</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-27757b15399f596f50859475191c30a5" class="toggle"  />
+    <label for="section-27757b15399f596f50859475191c30a5" class="flex justify-between">
+      <a  class="">Human Computer Interaction</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://example.com/docs/Classes/Human-Computer-Interaction/ConsideringCognition/" class="">Considering Cognition</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-db6dfb8212facb60c852484abfed6e6f" class="toggle"  />
+    <label for="section-db6dfb8212facb60c852484abfed6e6f" class="flex justify-between">
+      <a  class="">Algorithms</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://example.com/docs/Classes/Algorithms/Hashing/" class="">Hashing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://example.com/docs/Classes/Algorithms/balancedBST/" class="">Balanced Trees and AVL Trees</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Shell Shock Attack</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#lab-module-3-shellshock--attack">Lab Module 3: Shellshock  Attack</a>
+      <ul>
+        <li><a href="#part-one-overview">Part One: Overview</a></li>
+        <li><a href="#part-two-lab-tasks">Part Two: Lab Tasks</a>
+          <ul>
+            <li><a href="#21-experimenting-with-bash-function">2.1 Experimenting with Bash function</a></li>
+            <li><a href="#22-setting-up-cgi-programs">2.2 Setting up CGI programs</a></li>
+            <li><a href="#23-passing-data-to-bash-via-environment-variable">2.3 Passing Data to Bash via Environment variable</a></li>
+            <li><a href="#24-launching-the-shellshock-attacks">2.4 Launching the Shellshock Attacks</a></li>
+            <li><a href="#25-getting-a-reverse-shell-via-shellshock-attack">2.5 Getting a Reverse Shell via Shellshock Attack</a></li>
+            <li><a href="#26-using-the-patched-bash">2.6 Using the Patched Bash</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="lab-module-3-shellshock--attack">
+  Lab Module 3: Shellshock  Attack
+  <a class="anchor" href="#lab-module-3-shellshock--attack">#</a>
+</h1>
+<p>Alexander Sullivan<br>
+3/04/21</p>
+<h2 id="part-one-overview">
+  Part One: Overview
+  <a class="anchor" href="#part-one-overview">#</a>
+</h2>
+<p>Learning Objective: get first hand experience with the shellshock vulnerability.</p>
+<p>We will be experimenting with the actual shellshock attack in this lab. The Shellshock attack was first developed on September 24, 2014, and was a vulnerability within the Bash program.</p>
+<h2 id="part-two-lab-tasks">
+  Part Two: Lab Tasks
+  <a class="anchor" href="#part-two-lab-tasks">#</a>
+</h2>
+<h3 id="21-experimenting-with-bash-function">
+  2.1 Experimenting with Bash function
+  <a class="anchor" href="#21-experimenting-with-bash-function">#</a>
+</h3>
+<p>Bash within Ubuntu 16.04 has already been patched to fix the vulnerability, so the creators of the SEED VM have included a vulnerable version of the Bash program inside the /bin folder, known as  <code>bash_shellshock</code></p>
+<p>We will design an experiment that will verify that the <code>bash_shellshock</code> program is indeed vulnerable to the shell shock attack and then try the attack on the regular Bash program.</p>
+<p>
+  <img src="/images/exportingfoo.png" alt="exportingfoo" /></p>
+<p>Above we can see the exploit that makes bash vulnerable to a shellshock attack, because of a function called <code>parse_and_execute()</code> within the bash code when a new shell is created the line <code>echo &quot;malicious code&quot;</code> was executed rather than copied as part of the environment variable. This is because environment variables need to be passed from parent to child process.</p>
+<p>Below you can see that I changed my shell to one vulnerable to the shellshock attack, and then used a similar exploit as explained during class to get the root shell. I&rsquo;m not completely sure how this works, but I believe it has something to do with the fact that when you export your <code>foo</code> environment variable, then run our program <code>a.out</code>  uses the <code>system()</code> function to create a child process. When that child process is created it incorrectly parses the <code>foo</code> environment variable and executes the shell program. Then because <code>a.out</code> is a <code>setuid</code> program with root privileges the resulting shell is opened as root.</p>
+<p>
+  <img src="images/bash_shellshock.png" alt="bash_shellshock" /></p>
+<p>
+  <img src="/images/gettingRoot.png" alt="gettingRoot" /></p>
+<h3 id="22-setting-up-cgi-programs">
+  2.2 Setting up CGI programs
+  <a class="anchor" href="#22-setting-up-cgi-programs">#</a>
+</h3>
+<p>In this task we set up a cgi program and then viewed the resulting page at <code>localhost/gi/bin/myprog.cgi</code></p>
+<p>​							 
+  <img src="/images/cgi-setup.png" alt="cgi-setup" /></p>
+<p>
+  <img src="/images/curlcgi.png" alt="cgi-setup" /></p>
+<p>Then above you can see the page with the curl command.</p>
+<h3 id="23-passing-data-to-bash-via-environment-variable">
+  2.3 Passing Data to Bash via Environment variable
+  <a class="anchor" href="#23-passing-data-to-bash-via-environment-variable">#</a>
+</h3>
+<p>In this task we changed the CGI program to display the environment variables  using  <code>strings /proc/$$/environ</code></p>
+<p>Seen using the curl command here:
+  <img src="/images/cgiEnvVariables.png" alt="cgiEnvVariables" /></p>
+<p>This data could potentially be present from a remote server serving the web page. Here the info is from local host because we are running the web-server on our own machine.</p>
+<h3 id="24-launching-the-shellshock-attacks">
+  2.4 Launching the Shellshock Attacks
+  <a class="anchor" href="#24-launching-the-shellshock-attacks">#</a>
+</h3>
+<p>So this gave me access to the root shell but I&rsquo;m not sure if this attack was done correctly. First of all I changed the a.out program to the following</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(){
+
+        setuid(geteuid());
+        system(<span style="color:#e6db74">&#34;curl http://localhost/cgi-bin/myprog.cgi&#34;</span>);
+
+}
+
+</code></pre></div><p>Then I changed the resulting binary of the program above to be a <code>setuid</code> program, and exported another <code>foo</code> environment variable like this:</p>
+<p><code>export foo='() { echo &quot;hello&quot;; }; /bin/sh</code>'</p>
+<p>The following is the result:</p>
+<p>
+  <img src="/cgishellshock.png" alt="cgishellshock" /></p>
+<h3 id="25-getting-a-reverse-shell-via-shellshock-attack">
+  2.5 Getting a Reverse Shell via Shellshock Attack
+  <a class="anchor" href="#25-getting-a-reverse-shell-via-shellshock-attack">#</a>
+</h3>
+<p>In this task we were supposed to be able to get a reverse shell from the web server to our own shell. I figured this out after watching the lecture from Wenliang Du on you tube. He goes over how to listen on a port using the <code>nc</code> command and how to redirect the std out and std in back to another shell process.</p>
+<p>Combining this with the shellshock attack and I was able to open a reverse shell within the web server. Some environment variables are passed from the client process to the server process, so you can user the shellshock attack in a similar way as earlier. I did this using two terminals on the same machine like so:</p>
+<p>On one terminal I used <code>nc</code> to listen to port 9090:</p>
+<p>
+  <img src="/images/nccommand.png" alt="nccommand" /></p>
+<p>Then in another terminal I used a curl command and a shellshock attack to inject the reverse shell.</p>
+<p>
+  <img src="/images/curlReverseShell.png" alt="curlReverseShell" /></p>
+<p>Back on the first  terminal where I was listening I received the following:</p>
+<p>
+  <img src="/images/reverseShell.png" alt="reverseShell" /></p>
+<h3 id="26-using-the-patched-bash">
+  2.6 Using the Patched Bash
+  <a class="anchor" href="#26-using-the-patched-bash">#</a>
+</h3>
+<p>Running the same vulnerabilities as before I could no longer get the attacks to work. The shellshock injection has been patched so that the following commands are no longer executed.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#lab-module-3-shellshock--attack">Lab Module 3: Shellshock  Attack</a>
+      <ul>
+        <li><a href="#part-one-overview">Part One: Overview</a></li>
+        <li><a href="#part-two-lab-tasks">Part Two: Lab Tasks</a>
+          <ul>
+            <li><a href="#21-experimenting-with-bash-function">2.1 Experimenting with Bash function</a></li>
+            <li><a href="#22-setting-up-cgi-programs">2.2 Setting up CGI programs</a></li>
+            <li><a href="#23-passing-data-to-bash-via-environment-variable">2.3 Passing Data to Bash via Environment variable</a></li>
+            <li><a href="#24-launching-the-shellshock-attacks">2.4 Launching the Shellshock Attacks</a></li>
+            <li><a href="#25-getting-a-reverse-shell-via-shellshock-attack">2.5 Getting a Reverse Shell via Shellshock Attack</a></li>
+            <li><a href="#26-using-the-patched-bash">2.6 Using the Patched Bash</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
