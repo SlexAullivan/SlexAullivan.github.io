@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AlexSullivan.me</title>
+    <link>https://slexaullivan.github.io/docs/Projects/</link>
+    <description>Recent content on AlexSullivan.me</description>
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://slexaullivan.github.io/docs/Projects/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>https://slexaullivan.github.io/docs/Projects/WordPressOnAmazonEc2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://slexaullivan.github.io/docs/Projects/WordPressOnAmazonEc2/</guid>
+      <description>AWS Wordpress EC2 image #  Launching the Instance #    For this project we use an Amazon Linux 2 AMI with the x86 architecture.
+   The free tier t2.micro machine should be sufficient for the needs of this website. If the site gains a lot of traffic then we may need to upgrade this later.
+   When creating your instance you will need to create a public and private ssh key.</description>
+    </item>
+    
+  </channel>
+</rss>

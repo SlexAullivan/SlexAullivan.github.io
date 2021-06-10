@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="generator" content="Hugo 0.83.1" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AWS Wordpress EC2 image #  Launching the Instance #    For this project we use an Amazon Linux 2 AMI with the x86 architecture.
+   The free tier t2.micro machine should be sufficient for the needs of this website. If the site gains a lot of traffic then we may need to upgrade this later.
+   When creating your instance you will need to create a public and private ssh key.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
+<meta property="og:description" content="AWS Wordpress EC2 image #  Launching the Instance #    For this project we use an Amazon Linux 2 AMI with the x86 architecture.
+   The free tier t2.micro machine should be sufficient for the needs of this website. If the site gains a lot of traffic then we may need to upgrade this later.
+   When creating your instance you will need to create a public and private ssh key." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://slexaullivan.github.io/docs/Projects/WordPressOnAmazonEc2/" /><meta property="article:section" content="docs" />
+
+
+
+<title>Word Press on Amazon Ec2 | AlexSullivan.me</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.44110be292c9f873dbe57bd8895d52b387519bad9a89a86ed5c3705e11d6b0d5.css" integrity="sha256-RBEL4pLJ&#43;HPb5XvYiV1Ss4dRm62aiahu1cNwXhHWsNU=">
+<script defer src="/en.search.min.d211edde465a10b4e1e0d28856756228cdb7486911c9360d661cab52a1903fff.js" integrity="sha256-0hHt3kZaELTh4NKIVnViKM23SGkRyTYNZhyrUqGQP/8="></script>
+
+<script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><span>AlexSullivan.me</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-584936f95c063debdc4fc8e841969e9f" class="toggle"  />
+    <label for="section-584936f95c063debdc4fc8e841969e9f" class="flex justify-between">
+      <a  class="">Classes</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-52d5595dc24a501967770b34cf1afb5a" class="toggle"  />
+    <label for="section-52d5595dc24a501967770b34cf1afb5a" class="flex justify-between">
+      <a  class="">Computer System Security</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://slexaullivan.github.io/docs/Classes/Computer-System-Security/Labmodule4/" class="">Buffer Overflow Vulnerability</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://slexaullivan.github.io/docs/Classes/Computer-System-Security/envVariables/" class="">Env Variables</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://slexaullivan.github.io/docs/Classes/Computer-System-Security/Format-String-Vulnerability/" class="">Format String Vulnerability</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://slexaullivan.github.io/docs/Classes/Computer-System-Security/Lab-Module-3-Shellshock-Attack/" class="">Shell Shock Attack</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-db6dfb8212facb60c852484abfed6e6f" class="toggle"  />
+    <label for="section-db6dfb8212facb60c852484abfed6e6f" class="flex justify-between">
+      <a  class="">Algorithms</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://slexaullivan.github.io/docs/Classes/Algorithms/Hashing/" class="">Hashing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://slexaullivan.github.io/docs/Classes/Algorithms/balancedBST/" class="">Balanced Trees and AVL Trees</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9733e0357c49fcf0419bb2e9f4729dfc" class="toggle" checked />
+    <label for="section-9733e0357c49fcf0419bb2e9f4729dfc" class="flex justify-between">
+      <a  class="">Projects</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://slexaullivan.github.io/docs/Projects/WordPressOnAmazonEc2/" class=" active">Word Press on Amazon Ec2</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Word Press on Amazon Ec2</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#aws-wordpress-ec2-image">AWS Wordpress EC2 image</a>
+      <ul>
+        <li><a href="#launching-the-instance">Launching the Instance</a></li>
+        <li><a href="#connecting-to-your-ec2-instance">Connecting to your EC2 Instance</a></li>
+        <li><a href="#installing-the-lamp-stack">Installing the LAMP stack</a>
+          <ul>
+            <li><a href="#setting-file-permissions">Setting File Permissions</a></li>
+            <li><a href="#testing-the-lamp-server">Testing the LAMP server</a></li>
+            <li><a href="#secure-the-database-server">Secure the Database Server</a></li>
+          </ul>
+        </li>
+        <li><a href="#saving-your-instance-as-an-image">Saving Your Instance as an Image</a></li>
+        <li><a href="#installing-wordpress">Installing WordPress</a>
+          <ul>
+            <li><a href="#create-database-user-and-databse-for-wordpress">Create Database user and databse for Wordpress</a></li>
+            <li><a href="#create-and-edit-the-wp-configphp-file">Create and Edit the wp-config.php file</a></li>
+            <li><a href="#install-your-wordpress-files-under-the-apache-document-root">Install your WordPress files under the Apache Document Root</a></li>
+            <li><a href="#allow-wordpress-to-use-permalinks">Allow WordPress to Use Permalinks</a></li>
+            <li><a href="#install-the-php-graphics-drawing-library-on-amazon-linux-2">Install the PHP graphics drawing library on Amazon Linux 2</a></li>
+            <li><a href="#fix-file-permissions-for-the-apache-web-server">Fix File Permissions for the Apache Web Server</a></li>
+            <li><a href="#running-the-wordpress-installation-script">Running the WordPress Installation Script</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="aws-wordpress-ec2-image">
+  AWS Wordpress EC2 image
+  <a class="anchor" href="#aws-wordpress-ec2-image">#</a>
+</h1>
+<h2 id="launching-the-instance">
+  Launching the Instance
+  <a class="anchor" href="#launching-the-instance">#</a>
+</h2>
+<ul>
+<li>
+<p>For this project we use an Amazon Linux 2 AMI with the x86 architecture.</p>
+<p>
+  <img src="/images/wordpress/Untitled.png" alt="" /></p>
+</li>
+<li>
+<p>The free tier <code>t2.micro</code> machine should be sufficient for the needs of this website. If the site gains a lot of traffic then we may need to upgrade this later.</p>
+<p>
+  <img src="/images/wordpress/Untitled1.png" alt="" /></p>
+</li>
+<li>
+<p>When creating your instance you will need to create a public and private ssh key. AWS allows you to easily download your private key. <strong>Make sure to download your public key into a safe place</strong>, as this is the <strong>only</strong> time that you will be able to download this key. The name does not matter, just make sure you know where on your computer this key is located.</p>
+</li>
+</ul>
+<p>
+  <img src="/images/wordpress/Untitled2.png" alt="" /></p>
+<h2 id="connecting-to-your-ec2-instance">
+  Connecting to your EC2 Instance
+  <a class="anchor" href="#connecting-to-your-ec2-instance">#</a>
+</h2>
+<p>Change the permissions of your private key:</p>
+<ul>
+<li>Navigate to the directory where your private key is located and used the following command:
+<ul>
+<li><code>chmod 400 &lt;nameOfYourKey&gt;.pem</code></li>
+</ul>
+</li>
+</ul>
+<p>SSH into your ec2 instance</p>
+<p>SSH stands for secure shell, this is a way to access a computer over the internet that you are not directly connected to. Using the terminal <code>cd</code> into the directory where your private key is located and use the following command:</p>
+<ul>
+<li>Go to the ec2 management console on AWS educate and find your instances public ipv4 instance.</li>
+<li>In the terminal make sure you are in the folder where your <code>.pem</code> is located, the use the following command to ssh into your instance.</li>
+<li><code>ssh -i &lt;nameOfYourKey&gt;.pem ec2-user@&lt;public ipv4 address of your instance&gt;</code></li>
+<li>if prompted for ECDSA fingerprint, type <code>yes</code></li>
+</ul>
+<p>If you have done everything correctly you should be greeted by something that looks like the following:</p>
+<p>
+  <img src="/images/wordpress/Untitled3.png" alt="" /></p>
+<h2 id="installing-the-lamp-stack">
+  Installing the LAMP stack
+  <a class="anchor" href="#installing-the-lamp-stack">#</a>
+</h2>
+<p>After successfully Connecting to the instance, we need to install the LAMP stack onto our ec2. Reconnect to your instance and follow the following instructions:</p>
+<p>Note: The following commands are taken DIRECTLY from the AWS documentation 
+  <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-lamp-amazon-linux-2.html">linked here</a>.</p>
+<ol>
+<li>
+<p>Update Software packages: <code>sudo yum update -y</code></p>
+</li>
+<li>
+<p>Install the lamp-mariadb10.2-php7.2 and php7.2 Amazon Linux Extras repositories to get the latest versions of the LAMP MariaDB and PHP packages for Amazon Linux 2:</p>
+<p><code>sudo amazon-linux-extras install -y lamp-mariadb10.2-php7.2 php7.2</code></p>
+</li>
+<li>
+<p>Install Apache web server, MariaDB, and PHP packages:</p>
+<p><code>sudo yum install -y httpd mariadb-server</code></p>
+</li>
+<li>
+<p>Start the Apache Web server:</p>
+<p><code>sudo systemctl start httpd</code></p>
+</li>
+<li>
+<p>Configure the Apache Web server to Start when booted up:</p>
+<p><code>sudo systemctl enable httpd</code></p>
+<p>5.1. Verify <code>httpd</code> is on:</p>
+<p><code>sudo systemctl is-enabled httpd</code></p>
+<p>Should receive the following response: <code>enabled</code></p>
+</li>
+<li>
+<p>Allow  inbound traffic by changing the inbound rules on your security group. 
+  <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/working-with-security-groups.html#adding-security-group-rule">Official AWS documentation on changing security group rules here.</a></p>
+<ul>
+<li>
+<p>Under <em>Network &amp; Security</em> on the left navigation bar. Click Security groups.</p>
+<p>
+  <img src="/images/wordpress/Untitled4.png" alt="" /></p>
+</li>
+<li>
+<p>Identify which security group to edit. For me it was Launch-wizard-1 that was already attached to my ec2 instance.</p>
+<p>
+  <img src="/images/wordpress/Untitled5.png" alt="" /></p>
+</li>
+<li>
+<p>using the CIDR block 0.0.0.0/0 allows all traffic to reach your web server, use this only for testing for a short while. Production environments should not use this rule.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Test the Web-server by visiting the  public DNS address. Find this on your instances management console.</p>
+<p>Because there is nothing in the <code>/var/www/html</code> folder we should get the apache test page</p>
+<p>
+  <img src="/images/wordpress/Untitled6.png" alt="" /></p>
+</li>
+</ol>
+<h3 id="setting-file-permissions">
+  Setting File Permissions
+  <a class="anchor" href="#setting-file-permissions">#</a>
+</h3>
+<p>Apache serves files  that are located in the Apache document root or <code>/var/www/html</code> which is owned be root by default. We need to give the <code>ec2-user</code> account permissions in order to manipulate files with the Apache Document root. Use the Following steps. 
+  <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-lamp-amazon-linux-2.html">Again these steps are take directly from the AWS documentation linked here.</a></p>
+<ol>
+<li>
+<p>Add Your user to the Apache Group:</p>
+<p><code>sudo usermod -a -G apache ec2-user</code></p>
+</li>
+<li>
+<p>Logout and login again to make sure the <code>ec2-user</code> is part of the apache group.</p>
+<ol>
+<li>
+<p>Logout with:</p>
+<p><code>exit</code></p>
+</li>
+<li>
+<p>Reconnect to the instance via ssh, like before. Once connected check your groups with the following:</p>
+<p><code>groups</code></p>
+<p>You should see <code>apache</code> as one of the groups.</p>
+<p>
+  <img src="/images/wordpress/Untitled7.png" alt="" /></p>
+</li>
+</ol>
+</li>
+<li>
+<p>Change the group ownership of <code>/var/www</code> and thus its contents to the Apache group:</p>
+<p><code>sudo chown -R ec2-user:apache /var/www</code></p>
+</li>
+<li>
+<p>Add group write permissions and set the group ID on future subdirectories by changing the directory permissions of <code>/var/www</code> and its subdirectories:</p>
+<p><code>sudo chmod 2775 /var/www &amp;&amp; find /var/www -type d -exec sudo chmod 2775 {} \;</code></p>
+</li>
+<li>
+<p>add group write permissions by recursively changing the file permissions:</p>
+<p><code>find /var/www -type f -exec sudo chmod 0664 {} \;</code></p>
+</li>
+</ol>
+<h3 id="testing-the-lamp-server">
+  Testing the LAMP server
+  <a class="anchor" href="#testing-the-lamp-server">#</a>
+</h3>
+<ol>
+<li>
+<p>Create a PHP file in the Apache Document root:</p>
+<p><code>echo &quot;&lt;?php phpinfo(); ?&gt;&quot; &gt; /var/www/html/phpinfo.php</code></p>
+</li>
+<li>
+<p>View the PHP file we just created in the browser:</p>
+<p>
+  <a href="http://my.public.dns.amazonaws.com/phpinfo.php"></a></p>
+<p>Make sure to use your instances public dns when viewing this page, you should get the following:</p>
+<p>
+  <img src="/images/wordpress/Untitled8.png" alt="" /></p>
+</li>
+<li>
+<p>Because this page gives information about specific software being used on your stack, we should not have it viewable over the internet for security reasons. Delete the PHP file:</p>
+<p><code>rm /var/www/html/phpinfo.php</code></p>
+</li>
+</ol>
+<h3 id="secure-the-database-server">
+  Secure the Database Server
+  <a class="anchor" href="#secure-the-database-server">#</a>
+</h3>
+<p>MariaDB installs with features that are useful while developing however, they should not be used while in production. The following steps are how to secure the database; again these steps are taken directly from the AWS documentation linked before.</p>
+<ol>
+<li>
+<p>Start MariaDB server:</p>
+<p><code>sudo systemctl start mariadb</code></p>
+</li>
+<li>
+<p>run <code>msql_secure_installation</code></p>
+<p><code>sudo mysql_secure_installation</code></p>
+<p>You will be prompted to enter a root password. The by default there is no root password so press enter.</p>
+<p>Then you will be prompted to create a root password. Enter the Password, then press <code>y</code> for all of the options following.</p>
+</li>
+<li>
+<p>To turn off the database (optional):</p>
+</li>
+</ol>
+<p><code>sudo systemctl stop mariadb</code></p>
+<ol start="4">
+<li>To start the database on boot-up (optional):</li>
+</ol>
+<p><code>sudo systemctl enable mariadb</code></p>
+<h2 id="saving-your-instance-as-an-image">
+  Saving Your Instance as an Image
+  <a class="anchor" href="#saving-your-instance-as-an-image">#</a>
+</h2>
+<p>On the AWS ec2 management console select the instance that you have intalled the LAMP stack on.</p>
+<ul>
+<li>press Actions</li>
+</ul>
+<p>
+  <img src="/images/wordpress/Untitled9.png" alt="" /></p>
+<ul>
+<li>Press Image and templates:</li>
+<li>Press Create image</li>
+</ul>
+<p>
+  <img src="/images/wordpress/Untitled10.png" alt="" /></p>
+<ul>
+<li>You can find the Image that you created in the left nav bar under Images &gt; AMIs</li>
+</ul>
+<p>
+  <img src="/images/wordpress/Untitled11.png" alt="" /></p>
+<p>Once the image has been created you can use that image to launch an instance with the LAMP stack already enabled from the AMIs page. Launch a second image and use that as a starting point to install wordpress.</p>
+<h2 id="installing-wordpress">
+  Installing WordPress
+  <a class="anchor" href="#installing-wordpress">#</a>
+</h2>
+<p>Connect to your new instance that already has the LAMP stack created and running on it. and follow the following instructions to install wordpress on your instance. These Instructions are taken directly from the AWS documentation found here.</p>
+<ol>
+<li>
+<p>Download the latest WordPress release with <code>wget</code></p>
+<p><code>wget [https://wordpress.org/latest.tar.gz](https://wordpress.org/latest.tar.gz)</code></p>
+</li>
+<li>
+<p>Unzip the installation package:</p>
+<p><code>tar -xzf latest.tar.gz</code></p>
+</li>
+</ol>
+<h3 id="create-database-user-and-databse-for-wordpress">
+  Create Database user and databse for Wordpress
+  <a class="anchor" href="#create-database-user-and-databse-for-wordpress">#</a>
+</h3>
+<ol>
+<li>
+<p>Start databse server:</p>
+<p><code>sudo systemctl start mariadb</code></p>
+</li>
+<li>
+<p>Log in to databse server as <code>root</code> user, you should have made this passsword in an earlier step when configuring the lamp stack.</p>
+<p><code>mysql -u root -p</code></p>
+<ul>
+<li>
+<p>This will bring up the database interaction that looks like the following:</p>
+<p><code>MariaDB [(none)]&gt;</code></p>
+</li>
+<li>
+<p>Create a username and password with the following command:</p>
+<p><code>CREATE USER 'wordpress-user'@'localhost' IDENTIFIED BY 'your_strong_password';</code></p>
+<ul>
+<li>Replace <code>wordpress-user</code> with a username</li>
+<li>Replace <code>your_strong_password</code> with a password, avoid the <code>'</code> character or else you will break the command</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Create the database, use a descriptive name like <code>wordpress-db</code></p>
+<p><code>CREATE DATABASE </code>wordpress-db<code>;</code></p>
+</li>
+<li>
+<p>Grant full privileges to the user created at step 2:</p>
+<p><code>GRANT ALL PRIVILEGES ON </code>wordpress-db<code>.* TO &quot;wordpress-user&quot;@&quot;localhost&quot;;</code></p>
+<ul>
+<li>make sure to change <code>wordpress-user</code> to the username you set earlier</li>
+</ul>
+</li>
+<li>
+<p>Pick up all the changes you made by flushing the database:</p>
+<p><code>FLUSH PRIVILEGES;</code></p>
+</li>
+<li>
+<p>Exit the mysql client:</p>
+<p><code>exit</code></p>
+</li>
+</ol>
+<h3 id="create-and-edit-the-wp-configphp-file">
+  Create and Edit the wp-config.php file
+  <a class="anchor" href="#create-and-edit-the-wp-configphp-file">#</a>
+</h3>
+<ol>
+<li>
+<p>Copy the sample config file to a file called <code>wp-config.php</code></p>
+<p><code>cp wordpress/wp-config-sample.php wordpress/wp-config.php</code></p>
+</li>
+<li>
+<p>Use Nano to edit the <code>wp-config.php</code> file. DO NOT USE VIM, unless you have used it before and know how to navigate using vim. find and edit the following lines, when editing make sure to use the values you set earlier.</p>
+<p><code>nano wordpress/wp-config.php</code></p>
+<ol>
+<li>Edit the line that defines the database name: <code>define('DB_NAME', 'wordpress-db');</code></li>
+<li>Edit the line that defines the databse user: <code>define('DB_USER', 'wordpress-user');</code></li>
+<li>Edit the line that defines the password: <code>define('DB_PASSWORD', 'your_strong_password');</code></li>
+<li>Go to this 
+  <a href="https://api.wordpress.org/secret-key/1.1/salt/">link</a> and generate unique keys and salt.</li>
+</ol>
+<pre><code>define('AUTH_KEY',         ' #U$$+[RXN8:b^-L 0(WU_+ c+WFkI~c]o]-bHw+)/Aj[wTwSiZ&lt;Qb[mghEXcRh-');
+define('SECURE_AUTH_KEY',  'Zsz._P=l/|y.Lq)XjlkwS1y5NJ76E6EJ.AV0pCKZZB,*~*r ?6OP$eJT@;+(ndLg');
+define('LOGGED_IN_KEY',    'ju}qwre3V*+8f_zOWf?{LlGsQ]Ye@2Jh^,8x&gt;)Y |;(^[Iw]Pi+LG#A4R?7N`YB3');
+define('NONCE_KEY',        'P(g62HeZxEes|LnI^i=H,[XwK9I&amp;[2s|:?0N}VJM%?;v2v]v+;+^9eXUahg@::Cj');
+define('AUTH_SALT',        'C$DpB4Hj[JK:?{ql`sRVa:{:7yShy(9A@5wg+`JJVb1fk%_-Bx*M4(qc[Qg%JT!h');
+define('SECURE_AUTH_SALT', 'd!uRu#}+q#{f$Z?Z9uFPG.${+S{n~1M&amp;%@~gL&gt;U&gt;NV&lt;zpD-@2-Es7Q1O-bp28EKv');
+define('LOGGED_IN_SALT',   ';j{00P*owZf)kVD+FVLn-~ &gt;.|Y%Ug4#I^*LVd9QeZ^&amp;XmK|e(76miC+&amp;W&amp;+^0P/');
+define('NONCE_SALT',       '-97r*V/cgxLmp?Zy4zUU4r99QQ_rGs2LTd%P;|_e1tS)8_B/,.6[=UK&lt;J_y9?JWG');
+</code></pre><p>Exit the file and save  by pressing: <code>ctrl+x</code>, <code>y</code>, then <code>enter</code></p>
+</li>
+</ol>
+<h3 id="install-your-wordpress-files-under-the-apache-document-root">
+  Install your WordPress files under the Apache Document Root
+  <a class="anchor" href="#install-your-wordpress-files-under-the-apache-document-root">#</a>
+</h3>
+<p>To have WordPress run at the document root do the following;</p>
+<p><code>cp -r wordpress/* /var/www/html</code></p>
+<h3 id="allow-wordpress-to-use-permalinks">
+  Allow WordPress to Use Permalinks
+  <a class="anchor" href="#allow-wordpress-to-use-permalinks">#</a>
+</h3>
+<ol>
+<li>
+<p>open <code>https.conf</code> file with nano:</p>
+<p><code>sudo nano /etc/httpd/conf/httpd.conf</code></p>
+</li>
+<li>
+<p>find the section that starts with: <code>&lt;Directory &quot;/var/www/html&quot;&gt;</code></p>
+</li>
+<li>
+<p>inside this section there should be a line that says: <code>AllowOverride None</code></p>
+<p>change the all to <code>All</code></p>
+</li>
+<li>
+<p>Exit nano the same way as above.</p>
+</li>
+</ol>
+<h3 id="install-the-php-graphics-drawing-library-on-amazon-linux-2">
+  Install the PHP graphics drawing library on Amazon Linux 2
+  <a class="anchor" href="#install-the-php-graphics-drawing-library-on-amazon-linux-2">#</a>
+</h3>
+<ol>
+<li>
+<p>Install  <code>php-gd</code></p>
+<p><code>sudo yum install php-gd</code></p>
+</li>
+<li>
+<p>Verify the install version, the following command <code>sudo yum list installed | grep php-gd</code> should give the following ouput <code>php72-gd.x86_64  7.2.30-1.22.amzn1  amzn-updates</code></p>
+</li>
+</ol>
+<h3 id="fix-file-permissions-for-the-apache-web-server">
+  Fix File Permissions for the Apache Web Server
+  <a class="anchor" href="#fix-file-permissions-for-the-apache-web-server">#</a>
+</h3>
+<p>Because WordPress needs to write to the Apache Document Root we need to change some permissions.</p>
+<ol>
+<li>
+<p>Grant file ownership of <code>/var/www</code>  to the apache user</p>
+<p><code>sudo chown -R apache /var/www</code></p>
+</li>
+<li>
+<p>Grant ownership of <code>/var/www</code> to the apache group</p>
+<p><code>sudo chgrp -R apache /var/www</code></p>
+</li>
+<li>
+<p>Change directory permissions of <code>/var/www</code> to add group write permissions and to set the group ID on future subdirectories:</p>
+<p><code>sudo chmod 2775 /var/www find /var/www -type d -exec sudo chmod 2775 {} \;</code></p>
+</li>
+<li>
+<p>Change the file permissions of <code>/var/www</code> to add group write permissions:</p>
+<p><code>find /var/www -type f -exec sudo chmod 0664 {} \;</code></p>
+</li>
+<li>
+<p>Restart the Apache Web server:</p>
+<p><code>sudo systemctl restart httpd</code></p>
+</li>
+</ol>
+<h3 id="running-the-wordpress-installation-script">
+  Running the WordPress Installation Script
+  <a class="anchor" href="#running-the-wordpress-installation-script">#</a>
+</h3>
+<p>We are now ready to install wordpress.</p>
+<ol>
+<li>
+<p>use <code>systemctl</code> to ensure <code>https</code> and databse services start at boot up</p>
+<p><code>sudo systemctl enable httpd &amp;&amp; sudo systemctl enable mariadb</code></p>
+</li>
+<li>
+<p>Verify database is running:</p>
+<p><code>sudo systemctl status mariadb</code> if not running use <code>sudo systemctl start mariadb</code> to start it.</p>
+</li>
+<li>
+<p>verify Apache web server is running:</p>
+<p><code>sudo systemctl status httpd</code> if not running use <code>sudo systemctl start httpd</code> to start it.</p>
+</li>
+<li>
+<p>visit your public dns, you should see your word press website. Once youve gotten to this point, it would be wise to stop your instance and create an image from this instance.</p>
+</li>
+</ol>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#aws-wordpress-ec2-image">AWS Wordpress EC2 image</a>
+      <ul>
+        <li><a href="#launching-the-instance">Launching the Instance</a></li>
+        <li><a href="#connecting-to-your-ec2-instance">Connecting to your EC2 Instance</a></li>
+        <li><a href="#installing-the-lamp-stack">Installing the LAMP stack</a>
+          <ul>
+            <li><a href="#setting-file-permissions">Setting File Permissions</a></li>
+            <li><a href="#testing-the-lamp-server">Testing the LAMP server</a></li>
+            <li><a href="#secure-the-database-server">Secure the Database Server</a></li>
+          </ul>
+        </li>
+        <li><a href="#saving-your-instance-as-an-image">Saving Your Instance as an Image</a></li>
+        <li><a href="#installing-wordpress">Installing WordPress</a>
+          <ul>
+            <li><a href="#create-database-user-and-databse-for-wordpress">Create Database user and databse for Wordpress</a></li>
+            <li><a href="#create-and-edit-the-wp-configphp-file">Create and Edit the wp-config.php file</a></li>
+            <li><a href="#install-your-wordpress-files-under-the-apache-document-root">Install your WordPress files under the Apache Document Root</a></li>
+            <li><a href="#allow-wordpress-to-use-permalinks">Allow WordPress to Use Permalinks</a></li>
+            <li><a href="#install-the-php-graphics-drawing-library-on-amazon-linux-2">Install the PHP graphics drawing library on Amazon Linux 2</a></li>
+            <li><a href="#fix-file-permissions-for-the-apache-web-server">Fix File Permissions for the Apache Web Server</a></li>
+            <li><a href="#running-the-wordpress-installation-script">Running the WordPress Installation Script</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

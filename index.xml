@@ -40,6 +40,17 @@ Environment is implemented as key value pairs, if there are multiple values they
     </item>
     
     <item>
+      <title></title>
+      <link>https://slexaullivan.github.io/docs/Projects/WordPressOnAmazonEc2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://slexaullivan.github.io/docs/Projects/WordPressOnAmazonEc2/</guid>
+      <description>AWS Wordpress EC2 image #  Launching the Instance #    For this project we use an Amazon Linux 2 AMI with the x86 architecture.
+   The free tier t2.micro machine should be sufficient for the needs of this website. If the site gains a lot of traffic then we may need to upgrade this later.
+   When creating your instance you will need to create a public and private ssh key.</description>
+    </item>
+    
+    <item>
       <title>Balanced Trees and AVL Trees</title>
       <link>https://slexaullivan.github.io/docs/Classes/Algorithms/balancedBST/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -47,16 +58,6 @@ Environment is implemented as key value pairs, if there are multiple values they
       <guid>https://slexaullivan.github.io/docs/Classes/Algorithms/balancedBST/</guid>
       <description>Balanced BST&amp;rsquo;s #   Importance of balancing AVL trees  Remember binary search trees where all items in nodes subtree are less than the root and all of the items in the right subtree are greater than the root.
 Balancing Trees #  What is a balanced tree? #  Ideally we want our tree to have a height of   \(\theta(log(n))\)  Thus a BST is balanced if and only if:</description>
-    </item>
-    
-    <item>
-      <title>Considering Cognition</title>
-      <link>https://slexaullivan.github.io/docs/Classes/Human-Computer-Interaction/ConsideringCognition/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://slexaullivan.github.io/docs/Classes/Human-Computer-Interaction/ConsideringCognition/</guid>
-      <description>What is cognition? #  Cognition is many things but essentially how we think. Our cognition can be mader up of many parts. For example:
- attention perception memory learning reading, speaking and listening problem soving, planning, reasoning and decison making  Rarely are these used in a vacuum one at a time, instead human cognition involves many of these often at the same time. The most relevant for this course are probably attention and memory.</description>
     </item>
     
     <item>
