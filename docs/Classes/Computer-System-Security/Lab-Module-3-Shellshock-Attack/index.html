@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.88.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Lab Module 3: Shellshock Attack #  Alexander Sullivan
@@ -401,7 +401,7 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#24-launching-the-shellshock-attacks">#</a>
 </h3>
 <p>So this gave me access to the root shell but I&rsquo;m not sure if this attack was done correctly. First of all I changed the a.out program to the following</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
 </span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
 </span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
 </span><span style="color:#75715e"></span>
@@ -416,7 +416,7 @@ https://github.com/alex-shpak/hugo-book
 <p><code>export foo='() { echo &quot;hello&quot;; }; /bin/sh</code>'</p>
 <p>The following is the result:</p>
 <p>
-  <img src="/cgishellshock.png" alt="cgishellshock" /></p>
+  <img src="/images/cgishellshock.png" alt="cgishellshock" /></p>
 <h3 id="25-getting-a-reverse-shell-via-shellshock-attack">
   2.5 Getting a Reverse Shell via Shellshock Attack
   <a class="anchor" href="#25-getting-a-reverse-shell-via-shellshock-attack">#</a>
